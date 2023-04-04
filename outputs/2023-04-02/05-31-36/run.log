@@ -1,0 +1,33 @@
+[2023-04-02 05:31:37,031][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-02 05:31:37,033][haystack.pipelines.base][INFO] - It seems that an indexing Pipeline is run, so using the nodes' run method instead of run_batch.
+[2023-04-02 05:31:37,392][haystack.nodes.preprocessor.preprocessor][WARNING] - We found one or more sentences whose word count is higher than the split length.
+[2023-04-02 05:31:37,421][haystack.nodes.preprocessor.preprocessor][WARNING] - Document b48fb0da693eb4d81b3566d0069868b3 is 10488 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-04-02 05:31:37,562][haystack.nodes.preprocessor.preprocessor][WARNING] - Document dd048b8e5bcb7de1be5bd3937f15442f is 14232 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-04-02 05:31:37,611][haystack.nodes.preprocessor.preprocessor][WARNING] - Document 4189b42892b3d941c035947d512b69dd is 12059 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-04-02 05:31:38,242][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-02 05:31:38,242][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-02 05:31:38,553][haystack.modeling.model.language_model][INFO] -  * LOADING MODEL: 'deepset/roberta-base-squad2' (Roberta)
+[2023-04-02 05:31:46,267][haystack.modeling.model.language_model][INFO] - Auto-detected model language: english
+[2023-04-02 05:31:46,272][haystack.modeling.model.language_model][INFO] - Loaded 'deepset/roberta-base-squad2' (Roberta model) from model hub.
+[2023-04-02 05:31:49,532][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-02 05:34:36,210][haystack.document_stores.memory][WARNING] - InMemoryDocumentStore does not support scale_score for BM25 retrieval. This parameter is ignored.
+[2023-04-02 05:34:37,117][root][ERROR] - got unexpected error processing a message: The following `model_kwargs` are not used by the model: ['token_type_ids'] (note: typos in the generate arguments will also show up in this list).
+Traceback (most recent call last):
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 621, in _on_message
+    self._process_message(msg)
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 712, in _process_message
+    handler(msg, send_reply)
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 731, in handler
+    result = method.fn(interface, *args)
+  File "/home/sami/editAI/qa.py", line 70, in ask
+    return self._ask(question)
+  File "/home/sami/editAI/qa.py", line 90, in _ask
+    outputs = self.model.generate(**inputs, max_length = self.answer_length)
+  File "/usr/local/lib/python3.8/dist-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/generation/utils.py", line 1213, in generate
+    self._validate_model_kwargs(model_kwargs.copy())
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/generation/utils.py", line 1105, in _validate_model_kwargs
+    raise ValueError(
+ValueError: The following `model_kwargs` are not used by the model: ['token_type_ids'] (note: typos in the generate arguments will also show up in this list)
+

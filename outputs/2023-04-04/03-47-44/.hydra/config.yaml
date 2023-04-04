@@ -1,0 +1,21 @@
+mode: launch
+device: cpu
+is_using_tpu: true
+document_dir: build_your_first_question_answering_system
+is_downloading_documents: false
+retriever: BM25Retriever
+reader:
+  node: FARMReader
+  path: deepset/roberta-base-squad2
+model:
+  name: facebook/galactica-6.7b
+  type: OPTForCausalLM
+  tokenizer: AutoTokenizer
+  is_input_ids_only: true
+prompt: "Related text: {docs}\nQuestion: {question}\nAnswer: \n"
+answer_threshold: 0.8
+answer_length: 300
+dbus:
+  bus_name: ca.samiyousef.tpu
+  ai_interface: ca.samiyousef.tpu.editai
+  ai_object_path: /textbookai/editai

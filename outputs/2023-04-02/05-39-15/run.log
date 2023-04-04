@@ -1,0 +1,27 @@
+[2023-04-02 05:39:15,929][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-02 05:39:15,931][haystack.pipelines.base][INFO] - It seems that an indexing Pipeline is run, so using the nodes' run method instead of run_batch.
+[2023-04-02 05:39:16,293][haystack.nodes.preprocessor.preprocessor][WARNING] - We found one or more sentences whose word count is higher than the split length.
+[2023-04-02 05:39:16,323][haystack.nodes.preprocessor.preprocessor][WARNING] - Document b48fb0da693eb4d81b3566d0069868b3 is 10488 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-04-02 05:39:16,465][haystack.nodes.preprocessor.preprocessor][WARNING] - Document dd048b8e5bcb7de1be5bd3937f15442f is 14232 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-04-02 05:39:16,514][haystack.nodes.preprocessor.preprocessor][WARNING] - Document 4189b42892b3d941c035947d512b69dd is 12059 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-04-02 05:39:17,139][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-02 05:39:17,139][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-02 05:39:17,281][haystack.modeling.model.language_model][INFO] -  * LOADING MODEL: 'deepset/roberta-base-squad2' (Roberta)
+[2023-04-02 05:39:18,803][haystack.modeling.model.language_model][INFO] - Auto-detected model language: english
+[2023-04-02 05:39:18,805][haystack.modeling.model.language_model][INFO] - Loaded 'deepset/roberta-base-squad2' (Roberta model) from model hub.
+[2023-04-02 05:39:20,410][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-02 05:42:20,601][haystack.document_stores.memory][WARNING] - InMemoryDocumentStore does not support scale_score for BM25 retrieval. This parameter is ignored.
+[2023-04-02 05:42:22,019][root][ERROR] - got unexpected error processing a message: name 'device' is not defined.
+Traceback (most recent call last):
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 621, in _on_message
+    self._process_message(msg)
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 712, in _process_message
+    handler(msg, send_reply)
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 731, in handler
+    result = method.fn(interface, *args)
+  File "/home/sami/editAI/qa.py", line 74, in ask
+    return self._ask(question)
+  File "/home/sami/editAI/qa.py", line 90, in _ask
+    inputs = inputs.input_ids.to(device)
+NameError: name 'device' is not defined
+

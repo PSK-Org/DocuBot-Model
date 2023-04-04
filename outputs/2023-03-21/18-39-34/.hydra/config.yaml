@@ -1,0 +1,7 @@
+device: cpu
+is_using_tpu: false
+document_dir: build_your_first_question_answering_system
+retriever: BM25Retriever
+reader:
+  name: FARMReader
+  path: deepset/roberta-base-squad2

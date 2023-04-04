@@ -1,0 +1,144 @@
+[2023-03-29 14:03:35,796][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-03-29 14:03:35,798][haystack.pipelines.base][INFO] - It seems that an indexing Pipeline is run, so using the nodes' run method instead of run_batch.
+[2023-03-29 14:03:36,162][haystack.nodes.preprocessor.preprocessor][WARNING] - We found one or more sentences whose word count is higher than the split length.
+[2023-03-29 14:03:36,192][haystack.nodes.preprocessor.preprocessor][WARNING] - Document b48fb0da693eb4d81b3566d0069868b3 is 10488 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-03-29 14:03:36,334][haystack.nodes.preprocessor.preprocessor][WARNING] - Document dd048b8e5bcb7de1be5bd3937f15442f is 14232 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-03-29 14:03:36,385][haystack.nodes.preprocessor.preprocessor][WARNING] - Document 4189b42892b3d941c035947d512b69dd is 12059 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-03-29 14:03:37,331][haystack.nodes.prompt.prompt_node][WARNING] - PromptNode has been potentially initialized with a language model not fine-tuned on instruction following tasks. Many of the default prompts and PromptTemplates will likely not work as intended. Use custom prompts and PromptTemplates specific to the vblagoje/bart_lfqa model
+[2023-03-29 14:03:37,332][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-03-29 14:04:22,952][haystack.document_stores.memory][WARNING] - InMemoryDocumentStore does not support scale_score for BM25 retrieval. This parameter is ignored.
+[2023-03-29 14:04:23,251][root][ERROR] - got unexpected error processing a message: Exception while running node 'prompt_node': index out of range in self
+Enable debug logging to see the data that was passed when the pipeline failed..
+Traceback (most recent call last):
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/pipelines/base.py", line 530, in run
+    node_output, stream_id = self._run_node(node_id, node_input)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/pipelines/base.py", line 457, in _run_node
+    return self.graph.nodes[node_id]["component"]._dispatch_run(**node_input)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/base.py", line 199, in _dispatch_run
+    return self._dispatch_run_general(self.run, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/base.py", line 243, in _dispatch_run_general
+    output, stream = run_method(**run_inputs, **run_params)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 982, in run
+    results = self(prompt_collector=prompt_collector, **invocation_context)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 797, in __call__
+    return self.prompt(self.default_prompt_template, *args, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 835, in prompt
+    output = self.prompt_model.invoke(prompt, **kwargs_copy)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 621, in invoke
+    output = self.model_invocation_layer.invoke(prompt=prompt, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 358, in invoke
+    output = self.pipe(prompt, max_length=self.max_length, **model_input_kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/text2text_generation.py", line 165, in __call__
+    result = super().__call__(*args, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/base.py", line 1074, in __call__
+    return self.run_single(inputs, preprocess_params, forward_params, postprocess_params)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/base.py", line 1081, in run_single
+    model_outputs = self.forward(model_inputs, **forward_params)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/base.py", line 990, in forward
+    model_outputs = self._forward(model_inputs, **forward_params)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/text2text_generation.py", line 187, in _forward
+    output_ids = self.model.generate(**model_inputs, **generate_kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/generation/utils.py", line 1367, in generate
+    model_kwargs = self._prepare_encoder_decoder_kwargs_for_generation(
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/generation/utils.py", line 601, in _prepare_encoder_decoder_kwargs_for_generation
+    model_kwargs["encoder_outputs"]: ModelOutput = encoder(**encoder_kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/models/bart/modeling_bart.py", line 804, in forward
+    embed_pos = self.embed_positions(input)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/models/bart/modeling_bart.py", line 139, in forward
+    return super().forward(positions + self.offset)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/sparse.py", line 160, in forward
+    return F.embedding(
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/functional.py", line 2210, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+IndexError: index out of range in self
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 621, in _on_message
+    self._process_message(msg)
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 712, in _process_message
+    handler(msg, send_reply)
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 731, in handler
+    result = method.fn(interface, *args)
+  File "/home/sami/editAI/qa.py", line 50, in ask
+    prediction = self.pipe.run(query=question)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/pipelines/base.py", line 535, in run
+    raise Exception(
+Exception: Exception while running node 'prompt_node': index out of range in self
+Enable debug logging to see the data that was passed when the pipeline failed.
+
+[2023-03-29 14:04:48,270][haystack.document_stores.memory][WARNING] - InMemoryDocumentStore does not support scale_score for BM25 retrieval. This parameter is ignored.
+[2023-03-29 14:04:48,308][root][ERROR] - got unexpected error processing a message: Exception while running node 'prompt_node': index out of range in self
+Enable debug logging to see the data that was passed when the pipeline failed..
+Traceback (most recent call last):
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/pipelines/base.py", line 530, in run
+    node_output, stream_id = self._run_node(node_id, node_input)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/pipelines/base.py", line 457, in _run_node
+    return self.graph.nodes[node_id]["component"]._dispatch_run(**node_input)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/base.py", line 199, in _dispatch_run
+    return self._dispatch_run_general(self.run, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/base.py", line 243, in _dispatch_run_general
+    output, stream = run_method(**run_inputs, **run_params)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 982, in run
+    results = self(prompt_collector=prompt_collector, **invocation_context)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 797, in __call__
+    return self.prompt(self.default_prompt_template, *args, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 835, in prompt
+    output = self.prompt_model.invoke(prompt, **kwargs_copy)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 621, in invoke
+    output = self.model_invocation_layer.invoke(prompt=prompt, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/nodes/prompt/prompt_node.py", line 358, in invoke
+    output = self.pipe(prompt, max_length=self.max_length, **model_input_kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/text2text_generation.py", line 165, in __call__
+    result = super().__call__(*args, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/base.py", line 1074, in __call__
+    return self.run_single(inputs, preprocess_params, forward_params, postprocess_params)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/base.py", line 1081, in run_single
+    model_outputs = self.forward(model_inputs, **forward_params)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/base.py", line 990, in forward
+    model_outputs = self._forward(model_inputs, **forward_params)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/pipelines/text2text_generation.py", line 187, in _forward
+    output_ids = self.model.generate(**model_inputs, **generate_kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/generation/utils.py", line 1367, in generate
+    model_kwargs = self._prepare_encoder_decoder_kwargs_for_generation(
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/generation/utils.py", line 601, in _prepare_encoder_decoder_kwargs_for_generation
+    model_kwargs["encoder_outputs"]: ModelOutput = encoder(**encoder_kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/models/bart/modeling_bart.py", line 804, in forward
+    embed_pos = self.embed_positions(input)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/sami/.local/lib/python3.8/site-packages/transformers/models/bart/modeling_bart.py", line 139, in forward
+    return super().forward(positions + self.offset)
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/modules/sparse.py", line 160, in forward
+    return F.embedding(
+  File "/usr/local/lib/python3.8/dist-packages/torch/nn/functional.py", line 2210, in embedding
+    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)
+IndexError: index out of range in self
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 621, in _on_message
+    self._process_message(msg)
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 712, in _process_message
+    handler(msg, send_reply)
+  File "/home/sami/.local/lib/python3.8/site-packages/dbus_next/message_bus.py", line 731, in handler
+    result = method.fn(interface, *args)
+  File "/home/sami/editAI/qa.py", line 50, in ask
+    prediction = self.pipe.run(query=question)
+  File "/home/sami/.local/lib/python3.8/site-packages/haystack/pipelines/base.py", line 535, in run
+    raise Exception(
+Exception: Exception while running node 'prompt_node': index out of range in self
+Enable debug logging to see the data that was passed when the pipeline failed.
+

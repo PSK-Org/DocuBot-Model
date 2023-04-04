@@ -1,0 +1,13 @@
+[2023-04-04 02:22:58,478][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-04 02:22:58,480][haystack.pipelines.base][INFO] - It seems that an indexing Pipeline is run, so using the nodes' run method instead of run_batch.
+[2023-04-04 02:22:58,839][haystack.nodes.preprocessor.preprocessor][WARNING] - We found one or more sentences whose word count is higher than the split length.
+[2023-04-04 02:22:58,869][haystack.nodes.preprocessor.preprocessor][WARNING] - Document b48fb0da693eb4d81b3566d0069868b3 is 10488 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-04-04 02:22:59,009][haystack.nodes.preprocessor.preprocessor][WARNING] - Document dd048b8e5bcb7de1be5bd3937f15442f is 14232 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-04-04 02:22:59,057][haystack.nodes.preprocessor.preprocessor][WARNING] - Document 4189b42892b3d941c035947d512b69dd is 12059 characters long after preprocessing, where the maximum length should be 10000. Something might be wrong with the splitting, check the document affected to prevent issues at query time.
+[2023-04-04 02:22:59,694][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-04 02:22:59,694][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-04 02:22:59,848][haystack.modeling.model.language_model][INFO] -  * LOADING MODEL: 'deepset/roberta-base-squad2' (Roberta)
+[2023-04-04 02:23:01,407][haystack.modeling.model.language_model][INFO] - Auto-detected model language: english
+[2023-04-04 02:23:01,413][haystack.modeling.model.language_model][INFO] - Loaded 'deepset/roberta-base-squad2' (Roberta model) from model hub.
+[2023-04-04 02:23:03,071][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
+[2023-04-04 02:25:03,881][haystack.document_stores.memory][WARNING] - InMemoryDocumentStore does not support scale_score for BM25 retrieval. This parameter is ignored.

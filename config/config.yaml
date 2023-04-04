@@ -1,0 +1,52 @@
+mode: launch
+device: cpu
+is_using_tpu: True
+document_dir: build_your_first_question_answering_system
+is_downloading_documents: False
+retriever: BM25Retriever
+reader:
+    node: FARMReader
+    path: deepset/roberta-base-squad2
+model:
+#     name: nomic-ai/gpt4all-lora
+#     type: AutoModel
+#     tokenizer: AutoTokenizer
+#     name: allenai/scibert_scivocab_cased
+#     name: allenai/scibert_scivocab_uncased
+#     type: BertLMHeadModel
+#     tokenizer: AutoTokenizer
+    name: facebook/galactica-6.7b
+    type: OPTForCausalLM
+    tokenizer: AutoTokenizer
+    is_input_ids_only: True
+#     name: google/flan-t5-xl
+#     name: bigscience/bloom-1b7
+#     name: witiko/mathberta
+#     type: AutoModelForSeq2SeqLM
+#     type: BloomForCausalLM
+#     type: BertLMHeadModel
+#     type: AutoModelForCasualLM
+#     tokenizer: AutoTokenizer
+#     name: gpt2
+#     type: GPT2LMHeadModel
+#     tokenizer: GPT2Tokenizer
+# prompt: >
+#     Your task is to synthesize a comprehensive answer to the given question using the provided text. You should provide a clear and concise response that summarizes the key points and information presented in the text. Your answer should be in your own words and accurately reflect the content of the text.
+
+#     Related text: {docs}
+
+#     Question: {question}
+
+#     Answer: 
+prompt: >
+    Related text: {docs}
+
+    Question: {question}
+
+    Answer: 
+answer_threshold: 0.80
+answer_length: 300
+dbus:
+    bus_name: ca.samiyousef.tpu
+    ai_interface: ca.samiyousef.tpu.editai
+    ai_object_path: /textbookai/editai

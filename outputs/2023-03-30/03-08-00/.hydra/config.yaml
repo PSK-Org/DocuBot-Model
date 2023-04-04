@@ -1,0 +1,21 @@
+mode: testing
+device: cpu
+is_using_tpu: false
+document_dir: build_your_first_question_answering_system
+is_downloading_documents: false
+retriever: BM25Retriever
+reader:
+  node: FARMReader
+  path: deepset/roberta-base-squad2
+model:
+  name: witiko/mathberta
+  type: AutoModelForSeq2SeqLM
+  tokenizer: AutoTokenizer
+prompt: "Synthesize a comprehensive answer from the following text for the given question.\
+  \ \nProvide a clear and concise response that summarizes the key points and information\
+  \ presented in the text. Your answer should be in your own words and be no longer\
+  \ than 50 words. \nRelated text: {docs}\nQuestion: {question} \n"
+dbus:
+  bus_name: ca.samiyousef.tpu
+  ai_interface: ca.samiyousef.tpu.editai
+  ai_object_path: /textbookai/editai

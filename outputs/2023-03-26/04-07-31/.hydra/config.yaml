@@ -1,0 +1,12 @@
+device: cpu
+is_using_tpu: false
+document_dir: build_your_first_question_answering_system
+is_downloading_documents: true
+retriever: BM25Retriever
+reader:
+  node: PromptNode
+  path: google/flan-t5-large
+dbus:
+  bus_name: ca.samiyousef.tpu
+  ai_interface: ca.samiyousef.tpu.editai
+  ai_object_path: /textbookai/editai
