@@ -1,2 +1,0 @@
-[2023-03-24 19:42:05,638][haystack.modeling.utils][INFO] - Using devices: CPU - Number of GPUs: 0
-[2023-03-24 19:42:05,638][haystack.utils.import_utils][INFO] - Fetching from https://s3.eu-central-1.amazonaws.com/deepset.ai-farm-qa/datasets/documents/wiki_gameofthrones_txt1.zip to 'data/build_your_first_question_answering_system'

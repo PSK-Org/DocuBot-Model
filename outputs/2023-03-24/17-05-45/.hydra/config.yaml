@@ -1,8 +1,0 @@
-device: cpu
-is_using_tpu: false
-document_dir: build_your_first_question_answering_system
-is_downloading_documents: true
-retriever: BM25Retriever
-reader:
-  name: AutoModel
-  path: witiko/mathbert
